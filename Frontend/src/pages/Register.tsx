@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
 
-const API_BASE = 'http://localhost:5000/api/auth';
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000/api';
 
 interface FormData {
     name: string;
@@ -58,7 +58,7 @@ const Signup = () => {
                 throw new Error('Password must be at least 6 characters');
             }
 
-            await axios.post(`${API_BASE}/register`, {
+            await axios.post(`${API_BASE}/auth/register`, {
                 name: form.name,
                 email: form.email,
                 password: form.password,
@@ -89,7 +89,7 @@ const Signup = () => {
                 throw new Error('OTP is required');
             }
 
-            await axios.post(`${API_BASE}/verify-otp`, {
+            await axios.post(`${API_BASE}/auth/verify-otp`, {
                 email: form.email,
                 otp: form.otp,
             });
@@ -123,7 +123,7 @@ const Signup = () => {
             console.log('Google user info:', decoded);
 
             // Send the credential to your backend
-            const response = await axios.post(`${API_BASE}/google`, {
+            const response = await axios.post(`${API_BASE}/auth/google`, {
                 token: credentialResponse.credential
             });
 

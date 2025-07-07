@@ -44,7 +44,7 @@ const Login = () => {
                 throw new Error('All fields are required');
             }
 
-            const response = await axios.post(`${API_BASE}/auth/login`, {
+            const response = await axios.post(`${API_BASE}/login`, {
                 email: form.email,
                 password: form.password,
             });
@@ -78,7 +78,7 @@ const Login = () => {
             }
 
             // Send the credential to your backend
-            const response = await axios.post(`${API_BASE}/auth/google`, {
+            const response = await axios.post(`${API_BASE}/google`, {
                 token: credentialResponse.credential
             });
 
