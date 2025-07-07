@@ -1,10 +1,9 @@
-import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import LoginPage from './pages/Login.tsx';
 import RegisterPage from './pages/Register';
 import HomePage from './pages/Home';
 
-const App: React.FC = () => {
+const App = () => {
     const token: string | null = localStorage.getItem('token') || sessionStorage.getItem('token');
 
     return (

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { FcGoogle } from 'react-icons/fc';
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
